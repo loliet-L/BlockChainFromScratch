@@ -5,8 +5,6 @@ const cryptoHash = require("./crypto_hash");
 
 
 
-
-
 class Block{
     constructor({timeStamp,prevHash,hash,data})
     {
