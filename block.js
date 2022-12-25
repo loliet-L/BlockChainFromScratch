@@ -51,6 +51,11 @@ const genisisBlock = Block.genisis();
 // **testing mineBlock
 
 const result = Block.mineBlock({prevBlock: b1,data:"Block2"});
-console.log(result);
+// console.log(result);
+
+
+
+
+module.exports=Block;
 
 
