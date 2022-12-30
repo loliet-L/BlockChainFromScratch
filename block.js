@@ -1,6 +1,6 @@
 // * importing genisis data and CryptoHash from thier respective files
 
-const { GENESIS_DATA } = require("./config");
+const { GENESIS_DATA, MINE_RATE } = require("./config");
 const cryptoHash = require("./crypto_hash");
 
 
@@ -24,11 +24,12 @@ class Block{
     {
         let timeStamp,hash;
         const prevHash=prevBlock.hash;
-        const {difficulty}=prevBlock;
+        let {difficulty}=prevBlock;
         let nonce=0;
         do{
             nonce++;
             timeStamp=Date.now();
+            difficulty=Block.addDifficulty({originalBlock:prevBlock,timeStamp});
             hash=cryptoHash(timeStamp,data,prevHash,nonce,difficulty);
         }while(hash.substring(0,difficulty)!=="0".repeat(difficulty));
         return new this({
@@ -40,6 +41,23 @@ class Block{
             difficulty,
         });
 
+    }
+
+    // * ADJUST DIFFICULTY
+
+    static addDifficulty({originalBlock,timeStamp})
+    {
+        const {difficulty}=originalBlock;
+        if(difficulty<1) return 1;
+
+        const difference = timeStamp-originalBlock.timeStamp;
+
+        if(difference>MINE_RATE){
+            return difficulty-1;
+        }
+        else{
+             return difficulty+1;
+        }
     }
 }
 

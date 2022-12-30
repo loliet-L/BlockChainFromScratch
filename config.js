@@ -1,3 +1,5 @@
+
+const MINE_RATE=1000; // 1s =1000ms
 const INITIAL_DIFFICULTY=2;
 const GENESIS_DATA={
     timeStamp:1,
@@ -9,4 +11,4 @@ const GENESIS_DATA={
 
 };
 
-module.exports={GENESIS_DATA};
+module.exports={GENESIS_DATA , MINE_RATE};
