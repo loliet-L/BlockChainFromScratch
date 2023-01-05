@@ -1,5 +1,6 @@
 const crypto= require('crypto');
 
+
 // **using spirit operator to take multiple inputes as an arguments (like args and kwargs in python)
 //  to generate hash using the sha256 algorithm
 const cryptoHash=(...inputs)=>{
