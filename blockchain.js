@@ -26,10 +26,12 @@ class BlockChain{
     {
         const{timeStamp,data,prevHash,hash,nonce,difficulty}=chain[i];
         const realPrevHash=chain[i-1].hash;
+        const lastDifficulty=chain[i-1].difficulty;
         if(prevHash!==realPrevHash) return false;
         //  Validating the block hash  
         const ValidateHash= cryptoHash(timeStamp,data,prevHash,nonce,difficulty);
         if(hash!==ValidateHash) return false;
+        if(Math.abs(lastDifficulty-difficulty)>1)return false;
     }
     return true;
    }
