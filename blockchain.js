@@ -39,7 +39,7 @@ class BlockChain{
 //    FOR SELECTING THE LONGEST CHAIN FROM THE  MINERS
    replaceChain(chain)
    {
-    if(chain<=this.chain.length)
+    if(chain.length<=this.chain.length)
     {
         console.error("This is not the logest chain");
         return;
@@ -55,11 +55,11 @@ class BlockChain{
 
 // **Testing our BlockChain Class
 
-const blockchain = new BlockChain();
-blockchain.addBlock({data:"Block1"});
-blockchain.addBlock({data:"Block2"});
-const result = BlockChain.isValidChain(blockchain.chain);
-console.log(result);
-console.log(blockchain);
+// const blockchain = new BlockChain();
+// blockchain.addBlock({data:"Block1"});
+// blockchain.addBlock({data:"Block2"});
+// const result = BlockChain.isValidChain(blockchain.chain);
+// console.log(result);
+// console.log(blockchain);
 
 module.exports= BlockChain;
